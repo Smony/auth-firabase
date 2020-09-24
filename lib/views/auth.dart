@@ -1,4 +1,7 @@
+import 'package:banking/services/auth.dart';
+import 'package:banking/views/user.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthPage extends StatefulWidget {
   @override
@@ -8,6 +11,8 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
+
+  AuthService _authService = AuthService();
 
   String _email;
   String _pass;
@@ -99,12 +104,54 @@ class _AuthPageState extends State<AuthPage> {
       );
     }
 
-    void _actionUser() {
+    void _loginUser() async {
       _email = _emailController.text;
       _pass = _passController.text;
 
-      _emailController.clear();
-      _passController.clear();
+      if (_email.isEmpty || _pass.isEmpty) return;
+
+      User user = await _authService.singInWithEmailAndPassword(
+          _email.trim(), _pass.trim());
+
+      if (user == null) {
+        Fluttertoast.showToast(
+            msg: "Error SingIn",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 30.0
+        );
+      } else {
+        _emailController.clear();
+        _passController.clear();
+      }
+    }
+
+    void _registerUser() async{
+      _email = _emailController.text;
+      _pass = _passController.text;
+
+      if (_email.isEmpty || _pass.isEmpty) return;
+
+      User user = await _authService.registerWithEmailAndPassword(
+          _email.trim(), _pass.trim());
+
+      if (user == null) {
+        Fluttertoast.showToast(
+            msg: "Error Register!",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+      } else {
+        _emailController.clear();
+        _passController.clear();
+      }
     }
 
     return Scaffold(
@@ -115,7 +162,7 @@ class _AuthPageState extends State<AuthPage> {
           (_showLogin
               ? new Column(
                   children: <Widget>[
-                    _form('Login', _actionUser),
+                    _form('Login', _loginUser),
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: GestureDetector(
@@ -135,7 +182,7 @@ class _AuthPageState extends State<AuthPage> {
                 )
               : new Column(
                   children: <Widget>[
-                    _form('Register', _actionUser),
+                    _form('Register', _registerUser),
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: GestureDetector(

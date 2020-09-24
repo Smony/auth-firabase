@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>843551492679-uapma0kec74p0asebqjn0e110of613q8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.843551492679-uapma0kec74p0asebqjn0e110of613q8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCJXpE1lCMKKADoifHu85Jf7n_sSZ7b9QY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>843551492679</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.smony.banking</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-banking-8b4c2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-banking-8b4c2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:843551492679:ios:9f3a48ec4d738d5bf57f62</string>
+	<key>DATABASE_URL</key>
+	<string>https://flutter-banking-8b4c2.firebaseio.com</string>
+</dict>
+</plist>
