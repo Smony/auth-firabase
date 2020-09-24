@@ -1,3 +1,4 @@
+import 'package:banking/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:banking/models/bank.dart';
 
@@ -8,9 +9,22 @@ class HomePage extends StatelessWidget {
       child: new Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(
-          title: Text('BankingApp',
-            style: TextStyle(color: Colors.white, fontSize: 30),
+          title: Text(
+            'BankingApp',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+            ),
           ),
+          actions: <Widget>[
+            FlatButton.icon(
+                onPressed: () {
+                  AuthService().logOut();
+                },
+                icon: Icon(Icons.close, color: Colors.white,),
+                label: SizedBox.shrink()
+            ),
+          ],
         ),
         body: BankList(),
       ),
@@ -19,7 +33,6 @@ class HomePage extends StatelessWidget {
 }
 
 class BankList extends StatelessWidget {
-
   final bank = <Bank>[
     Bank(title: 'fsdfds1', desc: 'dsfsdfds1', author: 'Rimma'),
     Bank(title: 'fsdfds2', desc: 'dsfsdfds2', author: 'Smony'),
@@ -39,7 +52,10 @@ class BankList extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(color: Colors.amber),
               child: ListTile(
-                title: Text(bank[index].title, style: TextStyle(color: Colors.white, fontSize: 30),),
+                title: Text(
+                  bank[index].title,
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
               ),
             ),
           );
